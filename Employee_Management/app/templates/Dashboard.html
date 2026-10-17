@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table,th,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+    <form method="GET">
+    <input type="text" name="search" placeholder="Search">
+    <button type="submit">Apply</button>
+    <h3>Total Employees:{{empcount}}</h3>
+    </form>
+
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Joind Date</th>
+        </tr>
+        {% for x in emp %}
+            <tr>
+                <td>{{x.name}}</td>
+                <td>{{x.email}}</td>
+                <td>{{x.department}}</td>
+                 <td>{{x.salary}}</td>
+                  <td>{{x.joining_date}}</td>
+                 <td><a href="{% url "edit_e" x.id %}"></a>Edit</td>
+                 <td><a href="{% url "delete_e" x.id %}"></a>Delete</td>
+                 
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
